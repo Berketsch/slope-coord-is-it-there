@@ -75,12 +75,21 @@ function showQuestion() {
     nextBtn.style.display = 'none';
 }
 
+function nextQuestion() {
+    generateSlope();
+    generatePoint();
+    canvas.style.visibility = 'hidden';
+    showQuestion();
+}
+
 function checkAnswer(userSaysYes) {
     // Ensure integer comparison
     let isOnSlope = (Number(pointY) === Number(pointX) + Number(offset));
     yesBtn.style.display = 'none';
     noBtn.style.display = 'none';
     nextBtn.style.display = '';
+    canvas.style.visibility = 'visible';
+    drawGraph();
     if (userSaysYes === isOnSlope) {
         resultDiv.innerHTML = `<span style="color:green;">Correct!</span>`;
     } else {
@@ -90,18 +99,9 @@ function checkAnswer(userSaysYes) {
     resultDiv.innerHTML += `<br><small>Debug: pointX=${pointX}, pointY=${pointY}, offset=${offset}, isOnSlope=${isOnSlope}</small>`;
 }
 
-function nextQuestion() {
-    generateSlope();
-    generatePoint();
-    drawGraph();
-    showQuestion();
-}
-
 yesBtn.onclick = () => checkAnswer(true);
 noBtn.onclick = () => checkAnswer(false);
 nextBtn.onclick = nextQuestion;
 
-// Initial setup
-nextQuestion();
 // Initial setup
 nextQuestion();
