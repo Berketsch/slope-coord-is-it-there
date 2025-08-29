@@ -95,8 +95,7 @@ function checkAnswer(userSaysYes) {
     } else {
         resultDiv.innerHTML = `<span style="color:red;">Incorrect.</span>`;
     }
-    // Debug info
-    resultDiv.innerHTML += `<br><small>Debug: pointX=${pointX}, pointY=${pointY}, offset=${offset}, isOnSlope=${isOnSlope}</small>`;
+    // ...no debug info...
 }
 
 yesBtn.onclick = () => checkAnswer(true);
